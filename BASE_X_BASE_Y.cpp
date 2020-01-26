@@ -1,5 +1,5 @@
-//compile used : g++ compiler 
-//Sourabh Mahesh 
+//compiler used : g++ compiler 
+//Sourabh Mahesh Pankhawala
 
 #include<iostream>
 #include<string>
@@ -11,6 +11,10 @@ using namespace std;
 // BaseX <= Base36
 // BaseY <= Base36
 
+//this function is used for computation and printing values to the console.
+//this function is recursive.
+//Example if input: 26 Base_x = 10 Base_y = 16 then ordinary computation gives output as: "A1" 
+//but this function outputs require "actual" output as reverse: "1A"
 
 void compute(int num, int y, int res)
 {
@@ -22,6 +26,8 @@ void compute(int num, int y, int res)
 	else if (res >= 10 && res <= 36)
 		cout << (char)(res + 55) << " ";
 }
+
+//function for conversion 
 void conversion(string str, int x, int y)
 {
 	int i=0,num = 0, res = -1,j=0;
@@ -40,6 +46,8 @@ void conversion(string str, int x, int y)
 	else
 		cout << num << endl;
 }
+
+//This function will check if the given inputs are valid for conversion.
 int validate(string str, int x)
 {
 	
@@ -56,11 +64,13 @@ int validate(string str, int x)
 	}
 	return false;
 }
+//Driver Code
 int main()
 {
 	string number;
 	int base_x, base_y;
 	
+	//Required inputs 
 	cout << "Enter Number " << endl;
 	getline(cin, number);
 	do {
@@ -77,13 +87,16 @@ int main()
 			cout << "Incorrect Base Y!!" << endl;
 	} while (base_y < 2);
 
+	//This function will convert a given input to any base
 	conversion(number,base_x,base_y);
-
+	
+	//to hault the command prompt for a character input.
 	cin.ignore();
 	cin.get();
 	
 	return 0;
 }
+//Code snippet for conversion to Binary (using bitwise operator)- for optimization purpose.
 /*for (i = 7; i >= 0; --i)
 		((num >> i) & 1) ? cout << "1" : cout << "0";
 	*/
